@@ -9,7 +9,7 @@ Example:
 
     # Create grid and open remote data
     grid = HealPixGrid(nside=64)
-    ds = grid.open_arraylake("earthmind/earthnet2", "goes16/ir/2024")
+    ds = grid.open_arraylake("zeus-ai/earthnet2", "goes16/ir/2024")
 
     # Convert cube to 1D for xdggs
     ds_xdggs = grid.to_xdggs(ds)
