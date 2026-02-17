@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "zeus-healpix"
+version = "0.1.0"
+description = "Read and work with HEALPix Earth observation data from ArrayLake"
+requires-python = ">=3.10"
+license = "MIT"
+dependencies = [
+    "numpy",
+    "xarray",
+    "healpy",
+    "zarr",
+]
+
+[project.optional-dependencies]
+arraylake = ["arraylake"]
+latlon = ["reproject", "astropy"]
+all = ["arraylake", "reproject", "astropy"]
+dev = ["pytest"]
