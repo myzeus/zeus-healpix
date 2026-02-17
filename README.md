@@ -28,11 +28,11 @@ from zeus_healpix import HealPixGrid
 grid = HealPixGrid(nside=64)
 
 # List available datasets
-groups = HealPixGrid.list_groups("earthmind/earthnet2")
+groups = HealPixGrid.list_groups("zeus-ai/earthnet2")
 # ['goes16/ir/2024', 'goes18/ir/2024', 'era5/temperature/2024', ...]
 
 # Open a dataset (lazy loading)
-ds = grid.open_arraylake("earthmind/earthnet2", "goes16/ir/2024")
+ds = grid.open_arraylake("zeus-ai/earthnet2", "goes16/ir/2024")
 ```
 
 `open_arraylake` auto-configures `nside` from the data, so you don't need to know the resolution in advance.
@@ -113,7 +113,7 @@ export ARRAYLAKE_API_KEY="your-token-here"
 Or pass it directly:
 
 ```python
-ds = grid.open_arraylake("earthmind/earthnet2", "goes16/ir/2024", token="...")
+ds = grid.open_arraylake("zeus-ai/earthnet2", "goes16/ir/2024", token="...")
 ```
 
 ## HEALPix Formats
