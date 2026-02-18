@@ -26,6 +26,7 @@ from pathlib import Path
 from typing import Literal
 import healpy as hp
 
+import os
 import numpy as np
 import xarray as xr
 
@@ -90,7 +91,9 @@ class HealPixGrid:
                 "arraylake is required for ArrayLake access. "
                 "Install it with: pip install zeus-healpix[arraylake]"
             )
-
+        if token is None:
+            token = os.environ.get("ARRAYLAKE_API_KEY")
+        
         client = arraylake.Client(token=token)
         al_repo = client.get_repo(repo)
         store = al_repo.readonly_session(branch).store
