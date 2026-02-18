@@ -397,7 +397,14 @@ class HealPixGrid:
             import xdggs
             ds_xdggs = ds_xdggs.dggs.decode()
         """
-        return self.cube_to_1d_xarray(ds)
+        ds_1d = self.cube_to_1d_xarray(ds)
+
+        ds_1d['cell_ids'].attrs.update({
+            "grid_name": "healpix",
+            "nside": ds.x.shape[0],           # or "nside": 32
+            "nest": True          # Use True for 'nested' or False for 'ring' scheme
+        })
+        return ds_1d
 
     def read_zarr(
         self,
