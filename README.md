@@ -40,7 +40,7 @@ ds = grid.open_arraylake("zeus-ai/mirs-healpix", "mirs/n21/img/nside512/2024", t
 ```python
 from zeus_healpix import HealPixGrid
 
-grid = HealPixGrid(nside=64)
+grid = HealPixGrid(nside=512)
 
 # List available datasets
 groups = HealPixGrid.list_groups("zeus-ai/mirs-healpix")
