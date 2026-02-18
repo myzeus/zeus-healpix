@@ -18,6 +18,21 @@ pip install zeus-healpix[latlon]      # Lat/lon reprojection (reproject + astrop
 pip install zeus-healpix[all]         # Everything
 ```
 
+## Authentication
+
+ArrayLake access requires an API token. Set it as an environment variable:
+
+```bash
+export ARRAYLAKE_API_KEY="your-token-here"
+```
+
+Or pass it directly:
+
+```python
+ds = grid.open_arraylake("zeus-ai/mirs-healpix", "mirs/n21/img/nside512/2024", token="...")
+```
+
+
 ## Quick Start
 
 ### Open data from ArrayLake
@@ -28,11 +43,11 @@ from zeus_healpix import HealPixGrid
 grid = HealPixGrid(nside=64)
 
 # List available datasets
-groups = HealPixGrid.list_groups("zeus-ai/earthnet2")
-# ['goes16/ir/2024', 'goes18/ir/2024', 'era5/temperature/2024', ...]
+groups = HealPixGrid.list_groups("zeus-ai/mirs-healpix")
+# ['mirs/n20/img/nside512/2023', 'mirs/n20/img/nside512/2024', 'mirs/n20/img/nside512/2025', ...]
 
 # Open a dataset (lazy loading)
-ds = grid.open_arraylake("zeus-ai/earthnet2", "goes16/ir/2024")
+ds = grid.open_arraylake("zeus-ai/mirs-healpix", "mirs/n21/img/nside512/2024")
 ```
 
 `open_arraylake` auto-configures `nside` from the data, so you don't need to know the resolution in advance.
@@ -52,7 +67,7 @@ ds_1d = ds_1d.dggs.decode()
 
 ```python
 # Convert a single variable to a regular lat/lon grid
-latlon = grid.to_latlon(ds["C13"].isel(time=0), resolution=0.25)
+latlon = grid.to_latlon(ds["brightness_temperature"].isel(time=10, channel=1), resolution=0.25)
 
 # latlon is an xarray DataArray with (lat, lon) dimensions
 latlon.plot()
@@ -102,19 +117,6 @@ ds_1d = export_for_sharing(ds_cube, output_path="shared_data.zarr")
 | `detect_healpix_format(ds)` | Returns `"cube"`, `"1d"`, or `"unknown"` |
 | `export_for_sharing(ds, output_path)` | Convert cube to 1D and optionally write |
 
-## Authentication
-
-ArrayLake access requires an API token. Set it as an environment variable:
-
-```bash
-export ARRAYLAKE_API_KEY="your-token-here"
-```
-
-Or pass it directly:
-
-```python
-ds = grid.open_arraylake("zeus-ai/earthnet2", "goes16/ir/2024", token="...")
-```
 
 ## HEALPix Formats
 
