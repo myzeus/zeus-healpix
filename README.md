@@ -86,7 +86,7 @@ ds = grid.read_zarr("path/to/data.zarr")  # auto-detects cube vs 1D format
 from zeus_healpix import export_for_sharing
 
 # Convert cube-format data to 1D and optionally write to disk
-ds_1d = export_for_sharing(ds_cube, output_path="shared_data.zarr")
+ds_1d = export_for_sharing(ds, output_path="shared_data.zarr")
 ```
 
 ## API Reference
