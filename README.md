@@ -15,9 +15,9 @@ pip install -e .
 With optional dependencies:
 
 ```bash
-pip install zeus-healpix[arraylake]   # ArrayLake access
-pip install zeus-healpix[latlon]      # Lat/lon reprojection (reproject + astropy)
-pip install zeus-healpix[all]         # Everything
+pip install -e ".[arraylake]"    # ArrayLake access
+pip install -e ".[latlon]"       # Lat/lon reprojection (reproject + astropy)
+pip install -e ".[all]"          # Everything
 ```
 
 ## Authentication
