@@ -7,7 +7,7 @@ Read and work with HEALPix Earth observation data from ArrayLake.
 ## Installation
 
 ```bash
-git clone https://github.com/zeus-ai/zeus-healpix.git
+git clone https://github.com/myzeus/zeus-healpix.git
 cd zeus-healpix
 pip install -e .
 ```
