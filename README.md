@@ -22,7 +22,22 @@ pip install -e ".[all]"          # Everything
 
 ## Authentication
 
-ArrayLake access requires an API token. Set it as an environment variable:
+ArrayLake access requires login via the [https://app.earthmover.io/](https://app.earthmover.io/) and permissions provided by Zeus AI. 
+
+Set token via the terminal 
+```bash
+arraylake auth login
+```
+
+or login via Python
+
+```python
+from arraylake import Client
+client = Client()
+client.login()
+```
+
+Login with an Arraylake token is also supported
 
 ```bash
 export ARRAYLAKE_API_KEY="your-token-here"
