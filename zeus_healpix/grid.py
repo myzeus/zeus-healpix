@@ -92,7 +92,7 @@ class HealPixGrid:
                 "Install it with: pip install zeus-healpix[arraylake]"
             )
         if token is None:
-            token = os.environ.get("ARRAYLAKE_API_KEY")
+            token = os.getenv("ARRAYLAKE_API_KEY") # returns None if not set
         
         client = arraylake.Client(token=token)
         al_repo = client.get_repo(repo)
